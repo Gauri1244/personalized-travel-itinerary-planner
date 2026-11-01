@@ -1,0 +1,42 @@
+-- Personalized Travel Itinerary Planner
+-- Future Supabase schema (not applied yet).
+-- Review and run these statements in the Supabase SQL editor when ready.
+
+-- profiles: app-specific user data linked to auth.users
+-- create table public.profiles (
+--     id uuid primary key references auth.users (id) on delete cascade,
+--     display_name text,
+--     created_at timestamptz not null default now()
+-- );
+
+-- trips: one planned journey per user
+-- create table public.trips (
+--     id uuid primary key default gen_random_uuid(),
+--     user_id uuid references public.profiles (id) on delete cascade,
+--     destination text not null,
+--     start_date date,
+--     end_date date,
+--     preferences jsonb not null default '{}'::jsonb,
+--     created_at timestamptz not null default now()
+-- );
+
+-- itinerary_days: day-by-day structure for a trip
+-- create table public.itinerary_days (
+--     id uuid primary key default gen_random_uuid(),
+--     trip_id uuid not null references public.trips (id) on delete cascade,
+--     day_number integer not null,
+--     title text,
+--     notes text,
+--     unique (trip_id, day_number)
+-- );
+
+-- activities: places, meals, and experiences on a given day
+-- create table public.activities (
+--     id uuid primary key default gen_random_uuid(),
+--     day_id uuid not null references public.itinerary_days (id) on delete cascade,
+--     title text not null,
+--     category text,
+--     start_time time,
+--     location text,
+--     sort_order integer not null default 0
+-- );
