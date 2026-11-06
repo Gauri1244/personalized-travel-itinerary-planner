@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://personalized-travel-itinerary-planner-0x9j.onrender.com";
 
 // Generate itinerary
 export const generateTrip = async (tripData) => {
